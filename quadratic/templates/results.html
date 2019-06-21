@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+  <title>Quadratic quation</title>
+</head>
+<body>
+<p>Квадратное уравнение a*x*x + b*x + c = 0</p>
+<ul>
+  <li>
+    a = {{ a_html.param }}
+    {% if not a_html.is_valid %}
+        <p>{{ a_html.msg }}</p>
+    {% endif %}
+  </li>
+  <li>
+    b = {{ b_html.param }}
+    {% if not b_html.is_valid %}
+        <p>{{ b_html.msg }}</p>
+    {% endif %}
+  </li>
+  <li>
+    c = {{c_html.param}}
+    {%if not c_html.is_valid %}
+        <p>{{ c_html.msg }}</p>
+    {% endif %}
+  </li>
+</ul>
+<p>Дискриминант: {{d_html}}</p>
+<p>
+  {% if d_html > 0 %}
+    Квадратное уравнение имеет два действительных корня: x1 = {{x1_html}}, x2 = {{x2_html}}
+  {% elif d_html == 0 %}
+    Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: x1 = x2 = {{x1_html}}
+  {% elif d_html < 0 %}
+    Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений.
+  {% endif %}
+</p>
+</body>
+  
+  
