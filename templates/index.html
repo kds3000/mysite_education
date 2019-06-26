@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Django course</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/my_style.css">
+    <script src="/static/js/jquery-3.4.1.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <style type="text/css">
+    </style>
+  </head>
+  <body>
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'index' %}">Main</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'contact' %}">Contacts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'students:list_view' %}">Students</a>
+      </li>      
+    </ul>
+    <div class="block"> 
+      <h1>Django course from beginner to pro</h1>
+      <h2>Course description</h2>
+        <p>This course will teach you basics of web-development using popular framework Django</p>
+    </div>
+    <h3>Program</h3>
+      <table>
+        <tr>
+          <th>Курс</th><th>Описание</th>
+        </tr>
+        {% for course in courses %}
+        <tr><td>{{ course.name }}</td><td><a href="{% url 'courses:detail' course.name %}">{{ course.short_description }}</a></td></tr>
+        {% endfor %}
+      </table>
+  </body>  

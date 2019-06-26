@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ student.surname }} {{ student.name }}</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/my_style.css">
+    <script src="/static/js/jquery-3.4.1.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <style type="text/css">
+    </style>
+  </head>
+  <body>
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'index' %}">Main</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'contact' %}">Contacts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'students:list_view' %}">Students</a>
+      </li>  
+    </ul>
+    <h3>{{ student.surname }} {{ student.name }}</h3>
+      <table>
+        <tr><td>дата рождения</td><td>{{ student.date_of_birth }}</td></tr>
+        <tr><td>адрес</td><td>{{ student.address }}</td></tr>
+        <tr><td>почта</td><td>{{ student.email }}</td></tr>
+        <tr><td>логин skype</td><td>{{ student.skype }}</td></tr>
+        <tr><td>телефон</td><td>{{ student.phone }}</td></tr>
+        <tr>
+          <td>курсы</td>
+          <td>
+            {% for course in student.get_courses %}
+              <a href="{% url 'courses:detail' course %}">{{ course.name }}</a><br />
+            {% endfor %}
+          </td>
+        </tr>
+      </table>
+  </body>  

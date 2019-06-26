@@ -1,0 +1,21 @@
+.nav { 
+  background:#614E37 
+}
+.nav-link {
+  color: #E3C9A8
+}
+body {
+  background:#E3C9A8;
+  text-align:center;
+
+}
+div.block {
+  width:auto; 
+  height:auto; 
+  color:#E3C9A8;
+  background:#0D6946;
+}
+div.alert {
+  width:300px;
+  margin:auto;
+}

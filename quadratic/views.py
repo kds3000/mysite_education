@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from . import validator
 
 def quadratic_equation_solutions(request):
