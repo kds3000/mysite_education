@@ -25,4 +25,5 @@ urlpatterns = [
     path('quadratic/', include('quadratic.urls')),
     path('courses/', include('courses.urls')),
     path('students/', include('students.urls')),
+    path('coaches/', include('coaches.urls')),
 ]

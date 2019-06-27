@@ -9,7 +9,7 @@ def detail(request, course_name):
     course = Course.objects.get(name=course_name)
     context = {
         'lessons':lessons,
-        'course':course
+        'course':course,
     }
     return render(request, '../templates/courses/detail.html', context)
     
