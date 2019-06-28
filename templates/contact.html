@@ -1,26 +1,12 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Contacts</title>
-    <link rel="stylesheet" href="/static/css/bootstrap.css">
-    <link rel="stylesheet" href="/static/css/my_style.css">
-    <script src="/static/js/jquery-3.4.1.js"></script>
-    <script src="/static/js/bootstrap.js"></script>
-    <style type="text/css">
-    </style>
-  </head>
-  <body>
-    <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'index' %}">Main</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'contact' %}">Contacts</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'students:list_view' %}">Students</a>
-      </li>      
-    </ul>
+{% extends "base.html" %}
+
+{% block title %}Contacts{% endblock %}
+
+
+{% block active_contacts %}active{% endblock %}
+
+
+{% block content %}
     <h2>Contacts</h2>
     <h4>Director</h4>
       Name: Alexey Radchenko </br>
@@ -37,4 +23,4 @@
       Skype: Raccoon </br>
       E-mail: Raccoon@gmail.com </br>
       Phone: +79997894561
-  </body>  
+{% endblock content %}

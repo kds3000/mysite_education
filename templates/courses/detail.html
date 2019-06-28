@@ -1,31 +1,12 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>{{ course.name }}</title>
-    <link rel="stylesheet" href="/static/css/bootstrap.css">
-    <link rel="stylesheet" href="/static/css/my_style.css">
-    <script src="/static/js/jquery-3.4.1.js"></script>
-    <script src="/static/js/bootstrap.js"></script>
-    <style type="text/css">
-    </style>
-  </head>
-  <body>
-    <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'index' %}">Main</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'contact' %}">Contacts</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'courses:list_view_for_course' course.name %}">Students</a>
-      </li>  
-    </ul>
-    <div class="block"> 
-      <h1>{{ course.name }}</h1>
-      <h2>{{ course.short_description }}</h2>
-        <p>{{ course.description }}</p>
-    </div>
+{% extends "base.html" %}
+
+{% block title %}{{ course.name }}{% endblock %}
+
+
+{% block content %}
+
+
+{% include "include/main_title_include.html" with block_title=course.name block_short_desc=course.short_description block_full_desc=course.description%}
     <h3>Преподаватели</h3>
       <h6>Учитель</h6>
       <div class="block"> 
@@ -46,4 +27,4 @@
         <tr><td>{{ lesson.order }}</td><td>{{ lesson.subject }}</td><td>{{ lesson.description }}</td></tr>
         {% endfor %}
       </table>
-  </body>  
+{% endblock content %}

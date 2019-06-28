@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/my_style.css">
+    <script src="/static/js/jquery-3.4.1.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <style type="text/css">
+    </style>
+  </head>
+  <body>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link {% block active_main %}{% endblock %}" href="{% url 'index' %}">Main</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% block active_contacts %}{% endblock %}" href="{% url 'contact' %}">Contacts</a>
+      </li>
+      <li class="nav-item">        
+        <a class="nav-link {% block active_students %}{% endblock %}" 
+        {% if course.name %}
+          href="{% url 'courses:list_view_for_course' course.name %}">Students</a>
+        {% else %}
+          href="{% url 'students:list_view' %}">Students</a>
+        {% endif %}
+      </li>      
+    </ul>
+{% block content %}
+{% endblock content %}
+  </body>  
