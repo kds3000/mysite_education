@@ -23,6 +23,8 @@
               <a href="{% url 'courses:detail' course %}">{{ course }}</a><br />
             {% endfor %}
           </td>
+          <td><a class="btn btn-primary" href="{% url 'students:student_edit' student.id %}" role="button">Изменить</a></td>
+          <td><a class="btn btn-primary" href="{% url 'students:student_remove' student.id %}" role="button">Удалить</a></td>
         </tr>
         {% endfor %}
       </table>

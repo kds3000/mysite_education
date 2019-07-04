@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}{{ course.name }}{% endblock %}
+
+
+{% block content %}
+
+
+{% include "include/main_title_include.html" with block_title='Удаление студента' %}
+
+  Студент {{ student }} будет удален!
+  <form method='post'>
+    {% csrf_token %}
+  <input type='submit' value='Удалить!'> 
+  </form>
+{% endblock content %}

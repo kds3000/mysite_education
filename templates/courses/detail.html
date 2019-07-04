@@ -19,6 +19,7 @@
         <p>{{ course.assistant.description }}</p>
       </div>
     <h3>План курса</h3>
+      <a class="btn btn-primary" href="{% url 'courses:add_lesson' course.name %}" role="button">Добавить занятие</a>
       <table>
         <tr>
           <th>#</th><th>Тема</th><th>Описание</th>

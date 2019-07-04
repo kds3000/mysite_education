@@ -2,7 +2,7 @@ from django.db import models
 from coaches.models import Coach
 
 class Course(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
     short_description = models.CharField(max_length=150)
     description = models.TextField()
     coach = models.ForeignKey(Coach, models.CASCADE, related_name='coach_courses', null='True', blank='True')
