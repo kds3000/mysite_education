@@ -4,6 +4,7 @@ from students.models import Student
 from .forms import CourseModelForm, LessonModelForm
 from django.contrib import messages
 from django.urls import reverse
+from django.views.generic import CreateView
     
 def detail(request, course_name):
     lessons = Lesson.objects.filter(course__name=course_name)
@@ -14,13 +15,6 @@ def detail(request, course_name):
     }
     return render(request, '../templates/courses/detail.html', context)
     
-def list_view_for_course(request, course_name):
-    students = Student.objects.filter(courses__name=course_name)
-    context = { 
-        'students':students
-    }
-    return render(request, '../templates/students/list.html', context)
-
 def course_add(request):
     if request.method == 'POST':
         form = CourseModelForm(request.POST)
@@ -54,6 +48,24 @@ def course_remove(request, course_name):
         return redirect('index')            
     return render(request, '../templates/courses/remove.html', {'course':course})
     
+class SuccessMessageMixin():
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, 'Lesson %s has been successfully added' % self.object.subject)
+        return response    
+    
+class LessonCreateView(SuccessMessageMixin, CreateView):
+    model = Lesson
+    template_name = 'courses/add_lesson.html'
+    form_class = LessonModelForm
+    
+    def get_context_data(self):
+        context = super().get_context_data()
+        context['title'] = 'Создание нового урока'
+        return context
+        
+
+'''    
 def add_lesson(request, course_name):
     course = Course.objects.get(name=course_name)
     if request.method == 'POST':
@@ -66,4 +78,4 @@ def add_lesson(request, course_name):
     else:
         form = LessonModelForm(initial = {'course':course})
     return render(request, '../templates/courses/add_lesson.html', {'form':form})    
-
+'''

@@ -19,11 +19,7 @@
       </li>
       <li class="nav-item">        
         <a class="nav-link {% block active_students %}{% endblock %}" 
-        {% if course.name %}
-          href="{% url 'courses:list_view_for_course' course.name %}">Students</a>
-        {% else %}
-          href="{% url 'students:list_view' %}">Students</a>
-        {% endif %}
+          href="{% url 'students:list_view' %}?course_name={{ course.name }}">Students</a>
       </li>      
     </ul>
 {% if messages %}

@@ -1,5 +1,6 @@
 from django.db import models
 from coaches.models import Coach
+from django.urls import reverse_lazy
 
 class Course(models.Model):
     name = models.CharField(max_length=50, unique=True)
@@ -17,6 +18,11 @@ class Lesson(models.Model):
     description = models.TextField()
     course = models.ForeignKey(Course, models.CASCADE)
     order = models.PositiveIntegerField()
+    
+    def get_absolute_url(self):
+        course_id = self.course_id
+        course = Course.objects.get(id=course_id)
+        return reverse_lazy('courses:detail', kwargs={'course_name':course.name,})
     
     def __str__(self):
         return self.subject
